@@ -10,9 +10,29 @@ Local-first, AI-native automation platform.
 
 ## Repo layout (WIP)
 - `cmd/flowforge-server` — Go API + scheduler + coordinator
-- `cmd/flowforge-worker` — Go worker process
-- `packages/sdk` — TypeScript SDK (authoring)
-- `apps/web` — Next.js UI (visual builder)
+- `cmd/flowforge-worker` — Go worker process (WIP; server runs an in-process worker for MVP)
+
+## Running
+### Local
+```bash
+go run ./cmd/flowforge-server
+curl -sS localhost:8080/health
+```
+
+### Manual run (end-to-end MVP slice)
+```bash
+curl -sS -X POST localhost:8080/api/v1/runs/manual \
+  -H 'content-type: application/json' \
+  -d '{"name":"hello"}'
+
+# then fetch status:
+# curl -sS localhost:8080/api/v1/runs/<runId>
+```
+
+### Docker
+```bash
+docker compose up --build
+```
 
 ## Status
-Scaffolded. MVP implementation in progress.
+Early scaffold + DB + minimal job queue + manual run endpoint.
