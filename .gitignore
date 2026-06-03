@@ -1,0 +1,19 @@
+# Go
+/bin/
+/dist/
+*.exe
+*.test
+*.out
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+
+# Env
+.env
+.env.*
+
+# OS
+.DS_Store
